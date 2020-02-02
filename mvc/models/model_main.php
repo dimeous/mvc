@@ -9,8 +9,16 @@ class Model_Main extends Model
         if (isset($_POST['save'])) {
             $_IN = fromGPC($_POST);
 
-            if (!validMail($_IN['email2']))
-                $err[]='wrong email';
+            if (!validMail($_IN['email']))
+                $err[]='не верный email';
+            if (sEmpty($_IN['login']))
+                $err[]='не указано имя пользователя';
+            if (sEmpty($_IN['txt']))
+                $err[]='укажите текст задачи';
+            if (!$err){
+                global $db;
+                $db->save('tasks',$_IN,'login, email, txt','id');
+            }
         }
 		// Здесь мы просто сэмулируем реальные данные.
         $id_field='id';
