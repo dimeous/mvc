@@ -14,9 +14,8 @@
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item active"><a href="/"  class="nav-link">Главная</a></li>
-						<li  class="nav-item"><a href="/services"  class="nav-link">Услуги</a></li>
-						<li class="nav-item"><a href="/portfolio"  class="nav-link">Портфолио</a></li>
-						<li class="nav-item"><a href="/contacts"  class="nav-link">Контакты</a></li>
+						<li  class="nav-item"><a href="/login"  class="nav-link">Вход</a></li>
+						<li  class="nav-item"><a href="/login/out"  class="nav-link">Выход</a></li>
 					</ul>
 
                 </nav>
@@ -34,8 +33,8 @@
 			</div>
 
 		</div>
-		<div id="footer">
-			All rights reserved
+		<div id="footer" class="col-5 offset-md-4">
+			All rights reserved 2020
 		</div>
 	</body>
 </html>

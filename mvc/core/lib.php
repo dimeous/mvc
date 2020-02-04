@@ -47,6 +47,12 @@ function fromGPC($s) // if from GET/POST/COOKIE
     return $s;
 }
 
+function _COOKIE($p, $mask = '')
+{
+    return (isset($_COOKIE[$p]) ? filterInput(fromGPC($_COOKIE[$p]), $mask) : NULL);
+}
+
+
 function filterInput($s, $mask = '')
 {
     if (is_null($s) or !$mask)
@@ -92,6 +98,30 @@ function xStop()
         xEcho($message);
     exit;
 }
+function xSysInfo($message, $type = 0)
+{
+    $_GS['info'][$type][] = $message;
+    if ($type < 2)
+        return;
+    xAddToLog($message, 'system');
+    if ($type == 2)
+        xAbort($message);
+    xStop($message);
+}
+function xAbort($message = '')
+{
+    throw new Exception($message);
+}
+function xSysWarning($message)
+{
+    xSysInfo($message, 1);
+}
+
+function xSysError($message)
+{
+    xSysInfo($message, 2);
+}
+
 
 function xAddToLog($message, $topic = '', $clear_before = false)
 {
